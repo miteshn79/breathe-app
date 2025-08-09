@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Breathe — Home</title>
+<link rel="stylesheet" href="assets/styles.css"/></head>
+<body><div class="bg"></div>
+<header class="header glass"><div class="bar container"><div class="brand">Breathe</div>
+<nav class="nav"><a data-id="home" class="active" href="index.html">Home</a><a data-id="library" href="library.html">Library</a></nav></div></header>
+
+<main class="container"><h1>Breathing App</h1><p class="subtitle">Choose a category</p>
+<div class="grid4">
+  <a class="tile pastel peach" href="library.html?goal=Stress%20relief"><div class="txt">Stress<br/>Relief</div></a>
+  <a class="tile pastel blue"  href="library.html?goal=Anxiety%20control"><div class="txt">Anxiety<br/>Control</div></a>
+  <a class="tile pastel mint"  href="library.html?goal=Focus"><div class="txt">Focus</div></a>
+  <a class="tile pastel lavender" href="library.html?goal=Sleep"><div class="txt">Sleep</div></a>
+</div></main>
+
+<footer class="footer glass"><div class="bar container">Zero-backend static app (v4.2)</div></footer>
+
+<!-- Feedback modal -->
+<button id="feedback-btn" style="position:fixed;right:16px;bottom:16px;border-radius:999px;padding:10px 14px;border:1px solid #0b1b2b;background:#fff">Feedback</button>
+<dialog id="feedback-modal" class="glass" style="border:none;border-radius:16px;padding:16px;max-width:560px;width:calc(100% - 32px)">
+  <form id="feedback-form" method="dialog">
+    <h3 style="margin:0 0 8px">Share feedback</h3>
+    <label>Type <select name="type" class="select"><option>Bug</option><option>Idea</option></select></label>
+    <div style="height:10px"></div>
+    <label>Title <input name="title" placeholder="Short summary" style="width:100%;padding:8px;border-radius:10px;border:1px solid #ccc"/></label>
+    <div style="height:10px"></div>
+    <label>Details <textarea name="details" rows="6" style="width:100%;padding:8px;border-radius:10px;border:1px solid #ccc"></textarea></label>
+    <div style="display:flex;gap:8px;margin-top:14px;justify-content:flex-end">
+      <button value="cancel" class="btn">Cancel</button><button class="btn">Send</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="assets/ui.js"></script>
+<script src="assets/feedback.js"></script>
+</body></html>

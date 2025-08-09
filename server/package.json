@@ -1,0 +1,12 @@
+{
+  "name": "breathe-api",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.19.2",
+    "octokit": "^2.0.14",
+    "express-rate-limit": "^7.0.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}

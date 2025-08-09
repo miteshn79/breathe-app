@@ -1,0 +1,78 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Breathe — Exercise</title>
+<link rel="stylesheet" href="assets/styles.css"/></head>
+<body><div class="bg"></div>
+<header class="header glass"><div class="bar container"><div class="brand">Breathe</div>
+<nav class="nav"><a data-id="home" href="index.html">Home</a><a data-id="library" href="library.html">Library</a></nav></div></header>
+
+<main class="container">
+  <div id="crumb" class="breadcrumb"></div>
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <h1 id="ex-title">Exercise</h1><a id="start-now" class="btn" href="#">Start now</a>
+  </div>
+
+  <div class="player glass">
+    <div class="ring-wrap">
+      <svg id="rig" viewBox="0 0 240 260" width="300" height="320">
+        <defs>
+          <linearGradient id="gradIn" x1="0%" y1="0%" x2="100%"><stop offset="0%" stop-color="#8ec9ff"/><stop offset="100%" stop-color="#4aa3ff"/></linearGradient>
+          <linearGradient id="gradHold" x1="0%" y1="0%" x2="100%"><stop offset="0%" stop-color="#a5d4ff"/><stop offset="100%" stop-color="#7fb8ff"/></linearGradient>
+          <linearGradient id="gradOut" x1="0%" y1="0%" x2="100%"><stop offset="0%" stop-color="#6fa6ff"/><stop offset="100%" stop-color="#3d7fe0"/></linearGradient>
+        </defs>
+        <g id="ring-group">
+          <circle cx="120" cy="120" r="92" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="10"/>
+          <circle id="arc" cx="120" cy="120" r="92" fill="none" stroke="url(#gradIn)" stroke-width="10" stroke-linecap="round" stroke-dasharray="578 578" stroke-dashoffset="578" transform="rotate(-90 120 120)"/>
+          <circle id="dot" cx="120" cy="28" r="6" fill="#4aa3ff"/>
+          <circle id="orb" cx="120" cy="120" r="54" fill="rgba(127,184,255,0.18)" stroke="rgba(74,163,255,0.4)" stroke-width="2"/>
+        </g>
+        <g id="shape-group"></g>
+      </svg>
+
+      <div class="phase"><span id="phase">Ready</span></div>
+      <div class="countdown" id="countdown">4</div>
+      <div class="timer" id="timer">08:00</div>
+      <div class="timeline"><div class="seg" id="seg-in">In</div><div class="seg" id="seg-holdin">Hold</div><div class="seg" id="seg-sip">Top-up</div><div class="seg" id="seg-out">Out</div><div class="seg" id="seg-holdout">Hold</div></div>
+    </div>
+
+    <div class="controls">
+      <label>Session
+        <select id="session-mins" class="select"><option value="3">3:00</option><option value="5">5:00</option><option value="8" selected>8:00</option><option value="10">10:00</option></select>
+      </label>
+      <div class="range"><label for="tempo">Tempo <span id="tempo-out">1.75×</span></label><input id="tempo" type="range" min="1.00" max="2.25" step="0.05" value="1.75"></div>
+      <label>Trace
+        <select id="trace" class="select">
+          <option value="auto" selected>Auto</option>
+          <option value="ring">Circle</option>
+          <option value="square">Square</option>
+          <option value="triangle">Triangle</option>
+          <option value="lines">Lines (2-step)</option>
+        </select>
+      </label>
+      <label><input type="checkbox" id="reduce-motion"> Reduce motion</label>
+      <button id="btn-start">Start</button><button id="btn-pause">Pause</button><button id="btn-stop" class="ghost">End</button>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:12px">
+    <div class="panel glass"><h3>Why this works</h3><p id="ex-why"></p><h3>Instructions</h3><ol id="ex-steps"></ol></div>
+    <div class="panel glass"><h3>Quick benefits</h3><ul id="ex-benefits"></ul><h3>Links</h3><ul id="ex-links"></ul></div>
+  </div>
+</main>
+
+<footer class="footer glass"><div class="bar container">Zero-backend static app (v4.2)</div></footer>
+
+<!-- Feedback -->
+<button id="feedback-btn" style="position:fixed;right:16px;bottom:16px;border-radius:999px;padding:10px 14px;border:1px solid #0b1b2b;background:#fff">Feedback</button>
+<dialog id="feedback-modal" class="glass"><form id="feedback-form" method="dialog">
+  <h3>Share feedback</h3>
+  <select name="type" class="select"><option>Bug</option><option>Idea</option></select>
+  <input name="title" placeholder="Short summary" style="width:100%;margin:8px 0;padding:8px;border:1px solid #ccc;border-radius:10px"/>
+  <textarea name="details" rows="6" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:10px"></textarea>
+  <div style="display:flex;gap:8px;margin-top:10px;justify-content:flex-end"><button class="btn">Send</button></div>
+</form></dialog>
+
+<script src="assets/exercises.js"></script>
+<script src="assets/exercise.js"></script>
+<script src="assets/feedback.js"></script>
+</body></html>

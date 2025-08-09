@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Breathe — Library</title>
+<link rel="stylesheet" href="assets/styles.css"/></head>
+<body><div class="bg"></div>
+<header class="header glass"><div class="bar container"><div class="brand">Breathe</div>
+<nav class="nav"><a data-id="home" href="index.html">Home</a><a data-id="library" class="active" href="library.html">Library</a></nav></div></header>
+
+<main class="container">
+  <div class="breadcrumb"><a href="index.html">Home</a> › <span>Library</span></div>
+  <h1>Exercise Library</h1>
+  <div class="panel glass" style="margin:12px 0">
+    <label>Goal
+      <select id="filter-goal" class="select">
+        <option value="">All</option><option>Stress relief</option><option>Anxiety control</option>
+        <option>Sleep</option><option>Focus</option><option>BP support</option>
+      </select>
+    </label>
+    <span style="display:inline-block;width:14px"></span>
+    <label><input id="filter-hide-advanced" type="checkbox" checked> Hide advanced</label>
+  </div>
+  <div id="exercise-list" class="list"></div>
+</main>
+
+<footer class="footer glass"><div class="bar container">Zero-backend static app (v4.2)</div></footer>
+
+<!-- Feedback -->
+<button id="feedback-btn" style="position:fixed;right:16px;bottom:16px;border-radius:999px;padding:10px 14px;border:1px solid #0b1b2b;background:#fff">Feedback</button>
+<dialog id="feedback-modal" class="glass"><form id="feedback-form" method="dialog">
+  <h3>Share feedback</h3>
+  <select name="type" class="select"><option>Bug</option><option>Idea</option></select>
+  <input name="title" placeholder="Short summary" style="width:100%;margin:8px 0;padding:8px;border:1px solid #ccc;border-radius:10px"/>
+  <textarea name="details" rows="6" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:10px"></textarea>
+  <div style="display:flex;gap:8px;margin-top:10px;justify-content:flex-end"><button class="btn">Send</button></div>
+</form></dialog>
+
+<script src="assets/ui.js"></script>
+<script src="assets/exercises.js"></script>
+<script>
+(function(){
+  function render(){
+    const list = document.getElementById('exercise-list');
+    const sel  = document.getElementById('filter-goal');
+    const hide = document.getElementById('filter-hide-advanced');
+    let items = window.EXERCISES.slice();
+    if (sel.value) items = items.filter(e => e.categories.includes(sel.value));
+    if (hide.checked) items = items.filter(e => !e.advanced);
+    list.innerHTML = "";
+    items.forEach(e => {
+      const div = document.createElement('div'); div.className = 'item';
+      div.innerHTML = `<div><div><strong>${e.name}</strong></div><div class="meta">${(e.categories||[]).join(' • ')}</div></div>
+                       <div><a class="btn" href="exercise.html?id=${e.id}">Start</a></div>`;
+      list.appendChild(div);
+    });
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const g = new URLSearchParams(location.search).get('goal');
+    if (g) document.getElementById('filter-goal').value = g;
+    document.getElementById('filter-goal').onchange = render;
+    document.getElementById('filter-hide-advanced').onchange = render;
+    render();
+  });
+})();
+</script>
+<script src="assets/feedback.js"></script>
+</body></html>
